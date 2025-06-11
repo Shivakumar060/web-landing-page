@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanRoam Collective - Discover Your City</title>
+    <style>
+        /* Basic Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f4f7f6; /* Soft, muted background */
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: #2c3e50; /* Deep, thoughtful blue */
+            color: #ecf0f1; /* Light grey/off-white text */
+            padding: 20px 0;
+            border-bottom: 4px solid #e67e22; /* Warm, inviting orange accent */
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 25px;
+        }
+
+        header nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            background-color: #e67e22;
+            color: #2c3e50;
+        }
+
+        /* Section Base Styles */
+        section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 34px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        section .section-subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* Hero Section Styles */
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('https://images.unsplash.com/photo-1503428593586-e225b39bddfe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNpdHklMjBzdHJlZXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60') no-repeat center center/cover;
+            /* Replace with your own image or a solid color if preferred */
+            /* background: #34495e; */
+            color: #ffffff;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 46px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-section p.tagline {
+            font-size: 22px;
+            margin-bottom: 30px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e67e22; /* Orange CTA */
+            color: #ffffff;
+            padding: 14px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background: #d35400; /* Darker orange on hover */
+            transform: translateY(-2px);
+        }
+
+        /* "What We Discover" Section (Columns) */
+        .discover-section {
+            background: #ffffff;
+        }
+
+        .discover-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .discover-item {
+            flex-basis: calc(33.333% - 20px); /* 3 columns, accounting for gap */
+            min-width: 280px;
+            background: #f4f7f6; /* Light background for items */
+            padding: 30px 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .discover-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+
+        .discover-item .icon {
+            font-size: 40px; /* Placeholder for actual icons */
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .discover-item h4 {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .discover-item p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* About Us Section */
+        .about-section {
+            background: #ecf0f1; /* Slightly different light grey */
+        }
+        .about-section .container {
+            max-width: 800px; /* Narrower content for readability */
+        }
+        .about-section p {
+            font-size: 17px;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        /* Call to Action Section */
+        .join-us-section {
+            background: #34495e; /* Darker blue-grey */
+            color: #ecf0f1;
+        }
+        .join-us-section h2 {
+            color: #ffffff;
+        }
+        .join-us-section .section-subtitle {
+            color: #bdc3c7; /* Lighter grey for subtitle */
+        }
+
+
+        /* Footer Styles */
+        footer {
+            background: #1c2833; /* Very dark blue, almost black */
+            color: #95a5a6; /* Muted grey for footer text */
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 0; /* No margin if it follows a dark section */
+        }
+        footer p {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        footer a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Basic Responsiveness */
+        @media (max-width: 992px) {
+            .discover-item {
+                flex-basis: calc(50% - 15px); /* 2 columns */
+                margin-bottom: 30px;
+            }
+             .discover-grid {
+                justify-content: center; /* Center items when they wrap to 2 per row */
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            header .logo {
+                margin-bottom: 10px;
+            }
+            header nav ul {
+                margin-top: 10px;
+                flex-direction: column;
+            }
+            header nav ul li {
+                margin: 8px 0;
+            }
+
+            .hero-section h1 {
+                font-size: 36px;
+            }
+            .hero-section p.tagline {
+                font-size: 18px;
+            }
+            section h2 {
+                font-size: 28px;
+            }
+            section .section-subtitle {
+                font-size: 16px;
+            }
+
+            .discover-grid {
+                flex-direction: column;
+            }
+            .discover-item {
+                flex-basis: 100%;
+                margin-bottom: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">UrbanRoam</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#discover">Discover</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#join">Join</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h1>Uncover Your City's Hidden Stories.</h1>
+                <p class="tagline">Join the UrbanRoam Collective and experience your urban landscape like never before – from forgotten alleys to untold local histories.</p>
+                <a href="#join" class="cta-button">Start Exploring</a>
+            </div>
+        </section>
+
+        <!-- "What We Discover" Section -->
+        <section id="discover" class="discover-section">
+            <div class="container">
+                <h2>What We Discover Together</h2>
+                <p class="section-subtitle">We delve into the unique character of our city, focusing on these key areas of exploration:</p>
+                <div class="discover-grid">
+                    <div class="discover-item">
+                        <div class="icon"></div> <!-- Building icon -->
+                        <h4>Architectural Marvels</h4>
+                        <p>From grand historic buildings to quirky modern designs, we explore the structures that shape our city's skyline and soul.</p>
+                    </div>
+                    <div class="discover-item">
+                        <div class="icon"></div> <!-- Scroll/Parchment icon -->
+                        <h4>Local Lore & Legends</h4>
+                        <p>Unearth forgotten tales, neighborhood myths, and the fascinating stories of people who walked these streets before us.</p>
+                    </div>
+                    <div class="discover-item">
+                        <div class="icon"></div> <!-- Seedling/Park icon -->
+                        <h4>Hidden Green Spaces</h4>
+                        <p>Discover secret gardens, urban oases, and the surprising pockets of nature thriving amidst the concrete jungle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>Our Collective Spirit</h2>
+                <p>The UrbanRoam Collective is a community of curious minds passionate about urban exploration and local history. We believe every street corner has a story and every neighborhood holds secrets waiting to be discovered. Our mission is to foster a deeper connection with our city by sharing these experiences.</p>
+                <p>We organize guided walks, share research, and create a platform for members to contribute their own findings. Whether you're a lifelong resident or new to the city, there's always something new to learn and appreciate.</p>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section id="join" class="join-us-section">
+            <div class="container">
+                <h2>Ready to Roam?</h2>
+                <p class="section-subtitle">Sign up for our newsletter to get updates on upcoming discovery walks, exclusive content, and members-only events. Become part of a community that sees the city differently!</p>
+                <a href="mailto:join@urbanroam.co?subject=Newsletter Signup" class="cta-button">Join the Collective</a>
+                <!-- For a real site, you'd use a form here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>© 2023 UrbanRoam Collective. All Rights Reserved.</p>
+            <p>Exploring our city, one story at a time. | <a href="#">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
